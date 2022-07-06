@@ -8,6 +8,7 @@ import org.springframework.ui.Model;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
@@ -21,7 +22,7 @@ public class Chatbot {
 	@Autowired
 	private studentService stuser;
 	
-	@RequestMapping("/show")
+	@RequestMapping("/page")
 	public String show() {
 		return "chatbot";
 	}
@@ -34,11 +35,7 @@ public class Chatbot {
 		System.out.println(book.getQue());	
 		return "chatbot";
 	}
-	
-	
-	
-	
-	
+//list all employee		
 	@GetMapping("/")
 	public String add(Model model) {
 		List<Employee> listEmployee = stuser.listAll();
@@ -46,13 +43,19 @@ public class Chatbot {
 		return "index";
 		
 	}
-	
-	
-	
+//search by id and retreve data by id		
 	@PostMapping("/search")
 	public String doSearchEmployee(@ModelAttribute("employeeSearchFormData") Employee formData, Model model) {
 		Employee emp = stuser.get(formData.getId());
 		model.addAttribute("emp", emp);
+		return "index";
+	}
+//search by question and retrive answer	
+	@PostMapping("/searchque")
+	public String doSerch(@ModelAttribute("employeeSearchFormData") Employee formData, Model model) {
+		
+		Employee que = stuser.getQue(formData.getQue());
+		model.addAttribute("que", que);
 		return "index";
 	}
 	

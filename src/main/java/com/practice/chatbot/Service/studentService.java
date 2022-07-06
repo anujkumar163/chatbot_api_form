@@ -11,4 +11,6 @@ public interface studentService {
 	public Employee get(long id);
 
 	public void saveChat(Employee book);
+
+	public Employee getQue(String que);
 }

@@ -6,5 +6,6 @@ import com.practice.chatbot.entity.Employee;
 
 
 public interface StudentRepository extends JpaRepository<Employee, Long> {
-
+	Employee findByQue(String que);
+	
 }

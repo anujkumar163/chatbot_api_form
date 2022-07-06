@@ -35,6 +35,13 @@ public class studentServiceImpl implements studentService {
 		// TODO Auto-generated method stub
 		sturepo.save(book);
 	}
+
+	@Override
+	public Employee getQue(String que) {
+		// TODO Auto-generated method stub
+		Employee findByQue = sturepo.findByQue(que);
+		return findByQue;
+	}
 	
 	
 }
